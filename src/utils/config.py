@@ -81,6 +81,10 @@ def instantiate(registry, config, *args, partial=False, wrap=None, **kwargs):
         _name_ = config.pop("_name_")
         _target_ = registry[_name_]
 
+    if _target_ == 'src.models.sequence.hyena.HyenaFilter':
+        from ..models.sequence.hyena import HyenaFilter
+        _target_ = HyenaFilter
+
     # Retrieve the right constructor automatically based on type
     if isinstance(_target_, str):
         fn = hydra.utils.get_method(path=_target_)

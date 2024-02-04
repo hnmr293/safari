@@ -9,7 +9,7 @@ from functools import partial
 from einops import rearrange, repeat
 
 try:
-    from src.ops.fftconv import fftconv_ref, fftconv_func 
+    from ...ops.fftconv import fftconv_ref, fftconv_func 
 except ImportError:
     fftconv_func = None
 
@@ -18,10 +18,10 @@ try:
 except ImportError:
     FusedDense = None
 
-import src.utils.registry as registry
-from src.utils.train import OptimModule
-from src.utils.config import instantiate, auto_assign_attrs
-from src.models.nn import Activation
+from ...utils import registry
+from ...utils.train import OptimModule
+from ...utils.config import instantiate, auto_assign_attrs
+from ...models.nn import Activation
 
 
 # reference convolution with residual connection
